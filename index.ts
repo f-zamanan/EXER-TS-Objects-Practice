@@ -28,6 +28,30 @@ You need to describe a movie using an object. The movie has the following detail
            (You can log them using `console.log`)
 ******************************************************************/
 
+// task 1the interface movie
+interface Movie {
+  title: string;
+  director: string | string[];
+  releaseYear: number;
+  genre: string;
+  duration?: number;
+  rating?: string;
+  // reviews?: { reviewer: string; comment: string }[]; this is when defining an array of object
+  reviews?: Review[];
+}
+
+//task 2 variable object named movie
+
+const movie: Movie = {
+  title: "Iron Man",
+  director: "John Favreau",
+  releaseYear: 2008,
+  genre: "Action",
+};
+//task 3 acessing the movies title and release year
+
+console.log(movie.title);
+console.log(movie["releaseYear"]);
 
 /*****************************************************************
 🛠️ Part 2: Updating the Movie Object
@@ -41,6 +65,14 @@ Now let’s say the movie got updated information and we want to add more detail
 ✅ Task 6: Update the `releaseYear` from 2022 to 2023 since the movie had a new release.
 ******************************************************************/
 
+// task 4
+movie.duration = 139;
+
+// task 5
+movie.rating = "R";
+
+// task 6
+movie.releaseYear = 2009;
 
 /*****************************************************************
 📚 Part 3: Making the Object More Advanced
@@ -64,7 +96,21 @@ Let’s make our movie object even more flexible and realistic!
 ✅ Task 9: Create a separate `Review` interface to describe the structure of each review.
            Then, update the `Movie` interface to use this `Review[]` for the `reviews` property.
 ******************************************************************/
+// task 7
+let movieDirecter = movie.director as string;
+movie.director = [movieDirecter, "RDJ"];
 
+//task 8
+movie.reviews = [
+  { reviewer: "Film Critic", comment: "A wild, genre-bending masterpiece." },
+];
+
+// task 9
+
+interface Review {
+  reviewer: string;
+  comment: string;
+}
 
 /*****************************************************************
 🎁 Part 4: Index Signatures
