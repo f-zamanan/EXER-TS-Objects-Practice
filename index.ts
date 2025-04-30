@@ -149,3 +149,94 @@ console.log(movie);
 
 movie.Cast = ["RDJ", "Samual L. Jackson", "Gwenth Paltro", "John Favearu"];
 console.log(movie);
+// ----------------------------everything under is extra practice in class----------------------------------------
+// create an array "users" that contain user information
+//name, age, email (optional)
+// print only the name of each user as ***new array***
+
+interface Users {
+  name: string;
+  age: number;
+  email?: string;
+}
+
+const user: Users = {
+  name: "Fatma Zamanan",
+  age: 28,
+};
+
+const user2: Users = {
+  name: "Amani Zamanan",
+  age: 23,
+};
+const user3: Users = {
+  name: "Noona",
+  age: 9,
+};
+const user4: Users = {
+  name: "Reema",
+  age: 5,
+};
+
+let allUsers: Users[] = [user, user2, user3, user4]; // I can use all arrays methods on these objects
+
+console.log(allUsers.length);
+console.log(allUsers[0].name);
+
+// adding new object to the array allUsers
+
+allUsers.push({
+  name: "Ayah Althaydi",
+  age: 20,
+  email: "athaydi@mof.gov.kw",
+});
+
+console.log(allUsers);
+
+// using forEach method with an array of objects applies but doesn't modify the original array, no return
+allUsers.forEach((user) => {
+  console.log(`${user.name} is ${user.age} years old`);
+});
+
+// using map will apply a function to each object in the array and returns a new array with the modification
+let UpdatedUsersEmail = allUsers.map((user) => {
+  user.email = "BLAblaBLA";
+  return user;
+});
+console.log("All users", UpdatedUsersEmail);
+
+// using filter: filter objects based on a condition returns the passed values in a new array
+
+let olderThan20 = allUsers.filter((item) => {
+  if (item.age > 20) {
+    return true;
+  }
+});
+
+console.log("elderly: ", olderThan20[0].name);
+
+// I can chain the methods by the dot operator after the }.map
+
+// let olderThan19 = allUsers
+//   .filter((item) => {
+//     if (item.age > 19) {
+//       return true;
+//     }
+//   })
+//   .map((user) => {
+//     user.email = "BLAblaBLA";
+//     return user;
+//   });
+
+// I can encompass all the above with array of objects manipulation in an array
+
+function userOlderThan(users: Users[], age: number): Users[] {
+  let TempArray = users.filter((users) => {
+    if (users.age >= age) {
+      return true;
+    }
+  });
+  return TempArray;
+}
+
+console.log(userOlderThan(allUsers, 18)); // I can use forEach to print just the names
