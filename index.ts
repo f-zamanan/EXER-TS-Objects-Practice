@@ -27,6 +27,12 @@ You need to describe a movie using an object. The movie has the following detail
 ✅ Task 3: Access the movie’s title using dot notation, and access the release year using bracket notation. 
            (You can log them using `console.log`)
 ******************************************************************/
+// task 9
+
+interface Review {
+  reviewer: string;
+  comment: string;
+}
 
 // task 1the interface movie
 interface Movie {
@@ -39,6 +45,9 @@ interface Movie {
   // reviews?: { reviewer: string; comment: string }[]; this is when defining an array of object {key: value} are for defining an object
   // adding [] will convert the defined object to a string of objects
   reviews?: Review[];
+  // index signature: it allows to dynamically add new key-value pairs to an interface
+  // why? to make my code more dynamic. when? when I don't know the key explicitly
+  [key: string]: string | string[] | number | boolean | Review[] | undefined;
 }
 
 //task 2 variable object named movie
@@ -68,12 +77,15 @@ Now let’s say the movie got updated information and we want to add more detail
 
 // task 4
 movie.duration = 139;
+console.log(movie.duration);
 
 // task 5
 movie.rating = "R";
+console.log(movie.rating);
 
 // task 6
 movie.releaseYear = 2009;
+console.log(movie.releaseYear);
 
 /*****************************************************************
 📚 Part 3: Making the Object More Advanced
@@ -105,13 +117,10 @@ movie.director = [movieDirecter, "RDJ"];
 movie.reviews = [
   { reviewer: "Film Critic", comment: "A wild, genre-bending masterpiece." },
 ];
+// here I defined values to the optional key in the Movie interface, one object is the first element of the array
 
-// task 9
-
-interface Review {
-  reviewer: string;
-  comment: string;
-}
+console.log(movie.reviews[0].comment);
+// how to access the nested array object values seprately? I need to acces the first element of the array first since it's array of objects the access the keys-values in an object
 
 /*****************************************************************
 🎁 Part 4: Index Signatures
@@ -130,3 +139,13 @@ Index signatures allow us to define flexible object structures in TypeScript.
 
 
 **/
+//task 10 step 1 done above
+
+// step 2
+movie.FilmStudio = "Marvel";
+console.log(movie);
+
+//step 3
+
+movie.Cast = ["RDJ", "Samual L. Jackson", "Gwenth Paltro", "John Favearu"];
+console.log(movie);
