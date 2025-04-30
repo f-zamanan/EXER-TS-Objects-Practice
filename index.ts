@@ -36,7 +36,8 @@ interface Movie {
   genre: string;
   duration?: number;
   rating?: string;
-  // reviews?: { reviewer: string; comment: string }[]; this is when defining an array of object
+  // reviews?: { reviewer: string; comment: string }[]; this is when defining an array of object {key: value} are for defining an object
+  // adding [] will convert the defined object to a string of objects
   reviews?: Review[];
 }
 
